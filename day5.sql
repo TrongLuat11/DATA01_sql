@@ -61,3 +61,34 @@ where total_sales < cogs
 group by manufacturer
 order by total_loss desc 
 ---baitap9---
+--- bước 1 phân tích yêu cầu 
+---1, output (gốc/ phát sinh): id, movie, description, rating 
+---2. innput
+---3. điều kiện lọc theo trường nào 
+select * from Cinema
+where id%2=1 and description <> 'boring'
+order by rating desc
+---baitap10---
+select teacher_id,
+count(distinct subject_id) as cnt
+from Teacher
+group by teacher_id
+---baitap11---
+-- Write your PostgreSQL query statement below
+--- bước 1 phân tích yêu cầu 
+---1, output (gốc/ phát sinh): user_id, followers_count
+---2. innput
+---3. điều kiện lọc theo trường nào 
+select user_id, 
+count(distinct follower_id) as followers_count
+from Followers
+group by user_id
+---baitap12---
+---1, output (gốc/ phát sinh) class    
+---2. innput
+---3. điều kiện lọc theo trường nào 
+select class
+from Courses 
+group by class
+having (count(student))>=5
+
