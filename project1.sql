@@ -43,6 +43,7 @@ update sales_dataset_rfm_prj
 ---cau4--- 
 select extract(month from orderdate),
 	extract (year from orderdate),
+	extract( quarter from order date),---llay quy---
 (	case 
 	when extract (month from orderdate) in(1,2,3)then 1 
 	when extract (month from orderdate) in(4,5,6) then 2
