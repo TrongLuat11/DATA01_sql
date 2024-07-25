@@ -83,5 +83,24 @@ where rank <=5
 order by month_year 
 
 --ccau5---
+ with bt5 as(
+  select  
+format_date('%y-%m-%d',created_at) as dates,
+b.category as product_categories,
+retail_price 
+from bigquery-public-data.thelook_ecommerce.order_items as a
+join bigquery-public-data.thelook_ecommerce.products as b
+on a.product_id = b.id) 
+
+  select 
+dates,
+product_categories,
+sum(retail_price)
+from bt5
+where dates between '22-01-15' and '22-04-15'
+group by dates, product_categories
+order by dates 
+
+
 
 
