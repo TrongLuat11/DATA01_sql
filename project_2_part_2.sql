@@ -75,6 +75,7 @@ from (
   from cte1_main_index
   group by cohort,index ) 
   
+  ,cohort1 as (
   select
   cohort,
   sum(case when index=1 then cnt else 0 end) as m0,
@@ -83,6 +84,13 @@ from (
   sum(case when index=4 then cnt else 0 end) as m3
   from xxx
 group by cohort 
-order by cohort 
+order by cohort )
 
+select 
+cohort,
+round(100.00*m0/m0,2)||'%' as n0,
+round(100.00*m1/m0,2)||'%' as n1,
+round(100.00*m2/m0,2)||'%' as n2,
+round(100.00*m3/m0,2)||'%' as n3
+from cohort1 
 
